@@ -3,7 +3,7 @@
     <div class="container-fluid w-center">
 
       <b-form @submit="onSubmit" v-if="true" class="bg-light border rounded p-3">
-        <h5 class="mb-2">{{form.title == "" ? "Nouvel article" : form.title}}</h5>
+        <h5 class="mb-2">{{form.title}}</h5>
         <b-form-group>
           <b-form-input type="text"
                         v-model="form.title"
@@ -27,7 +27,7 @@
 
 <script>
 export default {
-  name: 'ArticleAdd',
+  name: 'ArticleChange',
   data () {
     return {
       form: {
@@ -44,7 +44,18 @@ export default {
         this.form.title = ''
         this.form.content = ''
       }
+    },
+    getData () {
+      this.$http.get('https://jsonplaceholder.typicode.com/posts/' + this.$el.id).then(response => {
+        this.form.title = response.body.title
+        this.form.content = response.body.body
+      }, error => {
+        console.log(error)
+      })
     }
+  },
+  mounted () {
+    this.getData()
   }
 }
 </script>
