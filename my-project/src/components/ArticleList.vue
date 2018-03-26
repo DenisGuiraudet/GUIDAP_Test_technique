@@ -14,10 +14,10 @@
         </div>
         <ul class="list-group list-group-flush">
           <li v-for="(item, index) in pageList()" v-bind:key="index" class="list-group-item">
-            <router-link to="/change/42">
+            <router-link :to="routerTo(item.id)">
               <h5 class="card-title text-truncate">{{item.title}}</h5>
             </router-link>
-            <p class="card-text">{{item.body.slice(0, 100)}}</p>
+            <p class="card-text">{{item.body.length >= 100 ? item.body.slice(0, 100) + "..." : item.body}}</p>
           </li>
         </ul>
       </div>
@@ -61,6 +61,9 @@ export default {
       }, error => {
         console.log(error)
       })
+    },
+    routerTo (id) {
+      return ('/change/' + id)
     }
   },
   mounted () {

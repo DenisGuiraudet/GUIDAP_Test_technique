@@ -3,7 +3,7 @@
     <div class="container-fluid w-center">
 
       <b-form @submit="onSubmit" v-if="true" class="bg-light border rounded p-3">
-        <h5 class="mb-2">{{this.$el.id}} : {{form.title}}</h5>
+        <h5 class="mb-2">{{form.title}}</h5>
         <b-form-group>
           <b-form-input type="text"
                         v-model="form.title"
@@ -12,11 +12,11 @@
           </b-form-input>
         </b-form-group>
         <b-form-group>
-          <b-form-input type="text"
+          <b-form-textarea
                         v-model="form.content"
                         required
                         placeholder="Contenu de l'article">
-          </b-form-input>
+          </b-form-textarea >
         </b-form-group>
         <b-button type="submit" variant="primary">Enregistrer</b-button>
       </b-form>

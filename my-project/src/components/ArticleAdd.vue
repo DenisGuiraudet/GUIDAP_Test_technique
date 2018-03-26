@@ -12,11 +12,11 @@
           </b-form-input>
         </b-form-group>
         <b-form-group>
-          <b-form-input type="text"
+          <b-form-textarea
                         v-model="form.content"
                         required
                         placeholder="Contenu de l'article">
-          </b-form-input>
+          </b-form-textarea >
         </b-form-group>
         <b-button type="submit" variant="primary">Enregistrer</b-button>
       </b-form>
