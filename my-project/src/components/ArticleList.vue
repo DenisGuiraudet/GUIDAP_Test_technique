@@ -22,7 +22,7 @@
 
       <b-pagination-nav align="center" :limit="1"
           :link-gen="linkGen" :page-gen="pageGen" :number-of-pages="Math.ceil(list.length / perPage)"
-          v-model="currentPage" class="mt-3 mx-auto w-center">
+          v-model="currentPage" class="mt-3 mx-auto">
       </b-pagination-nav>
 
     </b-container>
@@ -64,7 +64,6 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .w-center {
-  min-width: 30rem;
   max-width: 30rem;
 }
 </style>
