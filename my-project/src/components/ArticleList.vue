@@ -1,27 +1,29 @@
 <template>
   <div>
-    <b-container fluid class="text-center">
+    <b-container fluid>
 
-      <div class="card mx-auto" style="max-width: 30rem;">
+      <div class="card mx-auto w-center">
         <div class="card-header text-white bg-dark">
-          <div class="d-inline float-left mt-2">
+          <h5 class="d-inline float-left mt-2 mb-0">
             {{ title }}
-          </div>
+          </h5>
           <div class="d-inline float-right">
-            <b-button :pressed.sync="plus" variant="outline-light" class="font-weight-bold">+</b-button>
+            <b-button :pressed.sync="plus" variant="outline-light"
+              to="/add" class="font-weight-bold">+</b-button>
           </div>
         </div>
         <ul class="list-group list-group-flush">
-          <li class="list-group-item">Cras justo odio</li>
-          <li class="list-group-item">Dapibus ac facilisis in</li>
-          <li class="list-group-item">Vestibulum at eros</li>
+          <li v-for="(item, index) in pageList()" v-bind:key="index" class="list-group-item">
+            <h5 class="card-title">{{item}}</h5>
+            <p class="card-text">{{item.slice(0, 20)}}</p>
+          </li>
         </ul>
       </div>
 
-      <b-pagination align="center" :total-rows="100" :per-page="5"
-            v-model="currentPage" class="mt-3">
-        </b-pagination>
-      <br>
+      <b-pagination-nav align="center" :limit="1"
+          :link-gen="linkGen" :page-gen="pageGen" :number-of-pages="Math.ceil(list.length / perPage)"
+          v-model="currentPage" class="mt-3 mx-auto w-center">
+      </b-pagination-nav>
 
     </b-container>
   </div>
@@ -34,7 +36,26 @@ export default {
     return {
       title: 'Articles',
       plus: false,
-      currentPage: 3
+      currentPage: 1,
+      perPage: 5,
+      lists: ['hihi', 'soin'],
+      list: ['lol', 'mdr', 'lol', 'mdr', 'soin', 'mdr', 'soin', 'mdr', 'soin', 'mdr', 'soin', 'mdr', 'soin', 'mdr', 'soin', 'mdr', 'soin', 'mdr', 'soin', 'mdr', 'soin', 'mdr', 'soin', 'mdr', 'soin', 'mdr', 'soin']
+    }
+  },
+  methods: {
+    lol (event) {
+      alert(event)
+    },
+    linkGen (pageNum) {
+      return ''
+    },
+    pageGen (pageNum) {
+      return ('Page ' + pageNum + '/' + Math.ceil(this.list.length / this.perPage))
+    },
+    pageList () {
+      let min = (this.currentPage * this.perPage) - this.perPage
+      let max = (this.currentPage * this.perPage)
+      return this.list.slice(min, max)
     }
   }
 }
@@ -42,5 +63,8 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
+.w-center {
+  min-width: 30rem;
+  max-width: 30rem;
+}
 </style>
