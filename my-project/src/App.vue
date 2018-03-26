@@ -1,6 +1,8 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
+  <div>
+    <b-container fluid class="text-center my-5">
+      <img src="https://guidap.co/wp-content/uploads/2017/09/logo-mini-jaune-sans-fond.png">
+    </b-container>
     <router-view/>
   </div>
 </template>
@@ -12,12 +14,5 @@ export default {
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
