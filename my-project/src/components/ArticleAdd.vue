@@ -1,26 +1,13 @@
 <template>
   <div>
-    <b-container fluid>
-
-      <b-form @submit="onSubmit" v-if="true" class="bg-light border rounded p-3">
-        <h5 class="mb-2">{{form.title == "" ? "Nouvel article" : form.title}}</h5>
-        <b-form-group>
-          <b-form-input type="text"
-                        v-model="form.title"
-                        required
-                        placeholder="Titre de l'article">
-          </b-form-input>
-        </b-form-group>
-        <b-form-group>
-          <b-form-input type="text"
-                        v-model="form.content"
-                        required
-                        placeholder="Contenu de l'article">
-          </b-form-input>
-        </b-form-group>
-        <b-button type="submit" variant="primary">Enregistrer</b-button>
-      </b-form>
-
+    <b-container fluid class="text-center">
+      <h1 class="hello">{{ msg }}</h1>
+      lol fsdf
+      <div class="alert alert-primary">
+        This is a primary alert—check it out! mdr
+      </div>
+      <b-button :pressed.sync="myToggle" variant="outline-primary">Toggle Me</b-button>
+      <p>Pressed State: <strong>{{ myToggle }}</strong></p>
     </b-container>
   </div>
 </template>
@@ -30,18 +17,8 @@ export default {
   name: 'ArticleAdd',
   data () {
     return {
-      form: {
-        title: '',
-        content: ''
-      }
-    }
-  },
-  methods: {
-    onSubmit (event) {
-      event.preventDefault()
-      alert(JSON.stringify(this.form))
-      this.form.title = ''
-      this.form.content = ''
+      msg: 'Welcome to Your Vue.js App',
+      myToggle: false
     }
   }
 }
@@ -49,7 +26,5 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.w-center {
-  max-width: 50rem;
-}
+
 </style>
